@@ -1,29 +1,251 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mi Página</title>
-
-  <!-- Aquí enlazas tu hoja de estilos -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileArch Podcast - Arquitectura de Aplicaciones Móviles</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>Hola, mundo</h1>
-    <p>Si ves estilos, el CSS está cargando correctamente.</p>
-  </header>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🎧 Podcast EALL</a>
+            <ul class="nav-links">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#podcast">Podcast</a></li>
+                <li><a href="#topics">Temas</a></li>
+                <li><a href="#about">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main class="container">
-    <section>
-      <h2>Sección de ejemplo</h2>
-      <p>Este es un párrafo de prueba.</p>
-      <a class="btn" href="#">Un botón/enlace</a>
-    </section>
-  </main>
+    <main class="container">
+        <section id="home" class="hero">
+            <div class="badge">🎙️ Episodio Especial</div>
+            <h1>Arquitectura de desarrollo movil</h1>
+            <p>Explora los conceptos fundamentales de la arquitectura moderna de aplicaciones móviles</p>
+        </section>
 
-  <footer class="site-footer">
-    © 2025 Mi Sitio
-  </footer>
+        <section id="podcast" class="podcast-card">
+            <div class="podcast-info">
+                <div class="podcast-cover">
+                    📱
+                </div>
+                <div class="podcast-details">
+                    <h2>Fundamentos de Arquitectura Móvil</h2>
+                    <div class="episode-info">
+                        <strong>Episodio:</strong> Arquitectura de Aplicaciones Móviles Modernas<br>
+                        <strong>Duración:</strong> <span id="duration">--:--</span><br>
+                        <strong>Fecha:</strong> Septiembre 2025
+                    </div>
+                    <div class="description">
+                        En este episodio exploramos los modelos arquitectónicos más importantes como MVC, MVP, MVVM y Clean Architecture, 
+                        así como la integración con servicios en la nube, microservicios y tecnologías emergentes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección para subir archivo de audio -->
+            <div class="upload-section">
+                <p style="color: white; margin-bottom: 1rem;">
+                    <strong>📤 Sube tu archivo de podcast aquí</strong>
+                </p>
+                <input type="file" id="audioFile" class="file-input" accept="audio/*">
+                <label for="audioFile" class="file-label">
+                    Seleccionar archivo de audio
+                </label>
+                <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
+                    Formatos soportados: MP3, WAV, M4A, OGG
+                </p>
+            </div>
+
+            <div class="audio-player">
+                <audio id="audioPlayer" style="display: none;">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+                
+                <div class="audio-controls">
+                    <button class="play-btn" id="playBtn">▶️</button>
+                    <div class="time-info">
+                        <span id="currentTime">00:00</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                    </div>
+                    <div class="time-info">
+                        <span id="totalTime">00:00</span>
+                    </div>
+                    <div class="volume-control">
+                        <span>🔊</span>
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="topics" class="topics-section">
+            <div class="podcast-card">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Temas Principales del Podcast</h2>
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🏗️</div>
+                        <h3>Modelos Arquitectónicos</h3>
+                        <p>Análisis detallado de MVC, MVP, MVVM y Clean Architecture, sus ventajas y casos de uso específicos en el desarrollo móvil.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">☁️</div>
+                        <h3>Servicios en la Nube</h3>
+                        <p>Integración efectiva con servicios cloud, APIs REST, GraphQL y estrategias de sincronización de datos.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">💾</div>
+                        <h3>Almacenamiento Local</h3>
+                        <p>Técnicas de almacenamiento offline, cache strategies y sincronización bidireccional con la nube.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📈</div>
+                        <h3>Escalabilidad</h3>
+                        <p>Implementación de microservicios, load balancing y arquitecturas que soportan el crecimiento exponencial.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🤖</div>
+                        <h3>Tecnologías Emergentes</h3>
+                        <p>Retos arquitectónicos con IA, Machine Learning, IoT y realidad aumentada en aplicaciones móviles.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🔧</div>
+                        <h3>Mejores Prácticas</h3>
+                        <p>Patrones de diseño, testing strategies, CI/CD y metodologías para mantener código limpio y escalable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MobileArch Podcast. Creado como proyecto educativo sobre arquitectura de aplicaciones móviles.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variables del reproductor
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const currentTimeSpan = document.getElementById('currentTime');
+        const totalTimeSpan = document.getElementById('totalTime');
+        const durationSpan = document.getElementById('duration');
+        const progressBar = document.getElementById('progressBar');
+        const progress = document.getElementById('progress');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const fileInput = document.getElementById('audioFile');
+
+        let isPlaying = false;
+
+        // Manejar carga de archivo
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const url = URL.createObjectURL(file);
+                audioPlayer.src = url;
+                audioPlayer.load();
+                
+                // Actualizar la interfaz
+                const label = document.querySelector('.file-label');
+                label.textContent = `📁 ${file.name}`;
+                label.style.background = 'rgba(76, 175, 80, 0.3)';
+            }
+        });
+
+        // Función para formatear tiempo
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Event listeners del audio
+        audioPlayer.addEventListener('loadedmetadata', function() {
+            totalTimeSpan.textContent = formatTime(audioPlayer.duration);
+            durationSpan.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('timeupdate', function() {
+            const current = audioPlayer.currentTime;
+            const duration = audioPlayer.duration;
+            
+            currentTimeSpan.textContent = formatTime(current);
+            
+            if (duration) {
+                const progressPercent = (current / duration) * 100;
+                progress.style.width = progressPercent + '%';
+            }
+        });
+
+        audioPlayer.addEventListener('ended', function() {
+            isPlaying = false;
+            playBtn.textContent = '▶️';
+            progress.style.width = '0%';
+        });
+
+        // Control de reproducción
+        playBtn.addEventListener('click', function() {
+            if (!audioPlayer.src) {
+                alert('Por favor, selecciona un archivo de audio primero');
+                return;
+            }
+
+            if (isPlaying) {
+                audioPlayer.pause();
+                playBtn.textContent = '▶️';
+            } else {
+                audioPlayer.play();
+                playBtn.textContent = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Control de progreso
+        progressBar.addEventListener('click', function(e) {
+            if (audioPlayer.duration) {
+                const rect = progressBar.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const width = rect.width;
+                const clickTime = (clickX / width) * audioPlayer.duration;
+                audioPlayer.currentTime = clickTime;
+            }
+        });
+
+        // Control de volumen
+        volumeSlider.addEventListener('input', function() {
+            audioPlayer.volume = this.value / 100;
+        });
+
+        // Establecer volumen inicial
+        audioPlayer.volume = 0.7;
+
+        // Smooth scrolling para navegación
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Animación de entrada
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
