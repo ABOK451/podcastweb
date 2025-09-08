@@ -22,7 +22,7 @@
     <main class="container">
         <section id="home" class="hero">
             <div class="badge">🎙️ Episodio Especial</div>
-            <h1>Arquitectura de desarrollo movil</h1>
+            <h1>Arquitectura de desarrollo móvil</h1>
             <p>Explora los conceptos fundamentales de la arquitectura moderna de aplicaciones móviles</p>
         </section>
 
@@ -45,22 +45,14 @@
                 </div>
             </div>
 
-            <!-- Sección para subir archivo de audio -->
-            <div class="upload-section">
-                <p style="color: white; margin-bottom: 1rem;">
-                    <strong>📤 Sube tu archivo de podcast aquí</strong>
-                </p>
-                <input type="file" id="audioFile" class="file-input" accept="audio/*">
-                <label for="audioFile" class="file-label">
-                    Seleccionar archivo de audio
-                </label>
-                <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 1rem;">
-                    Formatos soportados: MP3, WAV, M4A, OGG
-                </p>
+            <div class="audio-info">
+                <h3>🎧 Escucha nuestro podcast aqui</h3>
+                <p></p>
             </div>
 
             <div class="audio-player">
-                <audio id="audioPlayer" style="display: none;">
+                <audio id="audioPlayer" style="display: none;" preload="metadata">
+                    <source src="PODCAST.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
                 
@@ -140,24 +132,11 @@
         const progressBar = document.getElementById('progressBar');
         const progress = document.getElementById('progress');
         const volumeSlider = document.getElementById('volumeSlider');
-        const fileInput = document.getElementById('audioFile');
 
         let isPlaying = false;
 
-        // Manejar carga de archivo
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const url = URL.createObjectURL(file);
-                audioPlayer.src = url;
-                audioPlayer.load();
-                
-                // Actualizar la interfaz
-                const label = document.querySelector('.file-label');
-                label.textContent = `📁 ${file.name}`;
-                label.style.background = 'rgba(76, 175, 80, 0.3)';
-            }
-        });
+        // El audio ya está cargado desde el código HTML
+        // Solo necesitamos esperar a que se carguen los metadatos
 
         // Función para formatear tiempo
         function formatTime(seconds) {
@@ -192,16 +171,14 @@
 
         // Control de reproducción
         playBtn.addEventListener('click', function() {
-            if (!audioPlayer.src) {
-                alert('Por favor, selecciona un archivo de audio primero');
-                return;
-            }
-
             if (isPlaying) {
                 audioPlayer.pause();
                 playBtn.textContent = '▶️';
             } else {
-                audioPlayer.play();
+                audioPlayer.play().catch(function(error) {
+                    console.log('Error al reproducir:', error);
+                    alert('Error al reproducir el audio. Verifica que el archivo esté en la ruta correcta.');
+                });
                 playBtn.textContent = '⏸️';
             }
             isPlaying = !isPlaying;
